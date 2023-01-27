@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Demo {
 	public static void main(String[] args) {
@@ -11,17 +12,17 @@ public class Demo {
 		int input = -1;
 		while (input_invalid) {
 			try {
-				input = scan.nextInt();
-				input_invalid = false;
+				input = scan.nextInt(); 
+				if (input < 1 || input > 3) {
+					input_invalid = true;	
+					System.out.println("Invalid input...\nType 1, 2, or 3, only!");
+				} else input_invalid = false;
 			}
-			catch (Exception InvalidInput) {
-				System.out.println("Invalid input...");
-				System.out.println("Type 1, 2, or 3, only!");
+			catch (InputMismatchException e){
+				System.out.println("Invalid input...\nType 1, 2, or 3, only!");
 				scan.nextLine();		
-			}			
+			}
 		}		
-		// If you look at this code, I am sorry about the 
-		// try/catch blocks, I know they're not technically correct
 			
 		scan.close();	
 
